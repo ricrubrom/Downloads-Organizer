@@ -34,7 +34,6 @@ compressed_extensions = [".zip", ".rar", ".tar", ".gz", ".bz2", ".7z", ".xz"]
 
 executable_extensions = [".exe", ".msi"]
 
-game_extensions = [".torrent", ".apk"]
 
 def move_file(dest, file, name):
     """
