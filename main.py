@@ -15,7 +15,6 @@ audio_dir = ""
 document_dir = ""
 compressed_dir = ""
 executable_dir = ""
-game_dir = ""
 random_dir = ""
 
 # Supported file extensions for different types
@@ -70,7 +69,6 @@ class MoverHandler(FileSystemEventHandler):
             self.check_document,
             self.check_compressed,
             self.check_executable,
-            self.check_game,
         ]
 
         # Iterate through the files in the source directory
@@ -150,14 +148,6 @@ class MoverHandler(FileSystemEventHandler):
                 logging.info(f"Moved executable file: {name}")
                 return True
 
-    def check_game(self, file, name):
-        # Check if the file is a game file based on its extension
-        for extension in game_extensions:
-            if name.endswith(extension) or name.endswith(extension.upper()):
-                dest = game_dir
-                move_file(dest, file, name)
-                logging.info(f"Moved game file: {name}")
-                return True
 
 if __name__ == "__main__":
     # Set up logging
