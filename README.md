@@ -42,16 +42,11 @@ This Python script organizes files in a specified directory based on their types
 1. Create a shortcut for the script.
 
 2. Press `Win + R` to open the Run dialog.
-
+s
 3. Type `shell:startup` and press Enter to open the "Startup" folder.
 
 4. Place the shortcut in the "Startup" folder.
 
 ## Author
 
-[Your Name]
-
-## License
-
-This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file for details.
-```
+Romero, Mateo [materomero04@gmail.com](materomero04@gmail.com)
