@@ -49,4 +49,4 @@ s
 
 ## Author
 
-Romero, Mateo [materomero04@gmail.com](materomero04@gmail.com)
+[Romero, Mateo - materomero04@gmail.com](materomero04@gmail.com)
