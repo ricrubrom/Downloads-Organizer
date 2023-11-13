@@ -1,37 +1,35 @@
+from pathlib import Path
 from os import scandir, remove, rename, makedirs
 from os.path import splitext, exists, join, isdir
 from shutil import move
 from time import sleep
-from pathlib import Path
 import logging
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import json
 
-# Define source and destination directories for different file types
-source_dir = ""
-image_dir = ""
-video_dir = ""
-audio_dir = ""
-document_dir = ""
-compressed_dir = ""
-executable_dir = ""
-random_dir = ""
+# Read the configuration from the JSON file
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
 
-# Supported file extensions for different types
-image_extensions = [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
-                    ".k25", ".bmp", ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"]
+# Access Directories from the configuration file
+source_dir = config['Directories']['source_dir']
+image_dir = config['Directories']['image_dir']
+video_dir = config['Directories']['video_dir']
+audio_dir = config['Directories']['audio_dir']
+document_dir = config['Directories']['document_dir']
+compressed_dir = config['Directories']['compressed_dir']
+executable_dir = config['Directories']['executable_dir']
+random_dir = config['Directories']['random_dir']
 
-video_extensions = [".webm", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".ogg",
-                    ".mp4", ".mp4v", ".m4v", ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"]
+# Supported file extensions from the configuration file
+image_extensions = config['SupportedExtensions']['image_extensions']
+video_extensions = config['SupportedExtensions']['video_extensions']
+audio_extensions = config['SupportedExtensions']['audio_extensions']
+document_extensions = config['SupportedExtensions']['document_extensions']
+compressed_extensions = config['SupportedExtensions']['compressed_extensions']
+executable_extensions = config['SupportedExtensions']['executable_extensions']
 
-audio_extensions = [".m4a", ".flac", "mp3", ".wav", ".wma", ".aac"]
-
-document_extensions = [".doc", ".docx", ".odt",
-                        ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"]
-
-compressed_extensions = [".zip", ".rar", ".tar", ".gz", ".bz2", ".7z", ".xz"]
-
-executable_extensions = [".exe", ".msi"]
 
 
 def move_file(dest, file, name):
