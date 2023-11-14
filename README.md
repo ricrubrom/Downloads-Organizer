@@ -23,11 +23,11 @@ This Python script organizes files in a specified directory based on their types
 
 1. Clone the repository or download the script file.
 
-2. Customize the script by modifying the `config.json` file to set the source directory and destination directories for different file types.
+2. Customize the script by modifying the `config.json` file to set the source directory and destination directories for different file types. If there are files that you don't want to be moved, you will have to add them to the `blocked_extensions` array in the JSON file.
 
 3. Run the script using the following command:
    ```bash
-   python file_organizer.py
+   python file_organizer.pyw
    ```
 
 4. The script will run in the background and organize files based on their types.
