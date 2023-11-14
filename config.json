@@ -20,6 +20,7 @@
             ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"],
         "compressed_extensions": [".zip", ".rar", ".tar", ".gz", ".bz2", ".7z", ".xz"],
         "game_extensions": [".torrent", ".apk"],
-        "executable_extensions": [".exe", ".msi"]
+        "executable_extensions": [".exe", ".msi"],
+        "blocked_extensions": ["tmp", "opdownload"]
     }
 }

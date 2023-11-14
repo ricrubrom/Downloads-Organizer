@@ -20,6 +20,7 @@ audio_dir = config['Directories']['audio_dir']
 document_dir = config['Directories']['document_dir']
 compressed_dir = config['Directories']['compressed_dir']
 executable_dir = config['Directories']['executable_dir']
+game_dir = config['Directories']['game_dir']
 random_dir = config['Directories']['random_dir']
 
 # Supported file extensions from the configuration file
@@ -28,8 +29,11 @@ video_extensions = config['SupportedExtensions']['video_extensions']
 audio_extensions = config['SupportedExtensions']['audio_extensions']
 document_extensions = config['SupportedExtensions']['document_extensions']
 compressed_extensions = config['SupportedExtensions']['compressed_extensions']
+game_extensions = config['SupportedExtensions']['game_extensions']
 executable_extensions = config['SupportedExtensions']['executable_extensions']
+blocked_extensions = config['SupportedExtensions']['blocked_extensions']
 
+# Rest of your script remains unchanged...
 
 
 def move_file(dest, file, name):
@@ -67,6 +71,7 @@ class MoverHandler(FileSystemEventHandler):
             self.check_document,
             self.check_compressed,
             self.check_executable,
+            self.check_game,
         ]
 
         # Iterate through the files in the source directory
@@ -80,6 +85,9 @@ class MoverHandler(FileSystemEventHandler):
                         break
                 else:
                     # This block is executed if none of the check functions return True
+                    for blocked in blocked_extensions:
+                        if name.lower().endswith(blocked):
+                            return
                     if not file.is_dir():
                         move_file(random_dir, file, name)
 
