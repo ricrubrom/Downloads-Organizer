@@ -73,7 +73,7 @@ class MoverHandler(FileSystemEventHandler):
             self.check_executable,
             self.check_game,
         ]
-
+        sleep(60)
         # Iterate through the files in the source directory
         with scandir(source_dir) as files:
             for file in files:
