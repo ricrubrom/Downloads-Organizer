@@ -79,15 +79,15 @@ class MoverHandler(FileSystemEventHandler):
             for file in files:
                 name = file.name
                 # Iterate through check functions
+                for blocked in blocked_extensions:
+                    if name.lower().endswith(blocked):
+                        return
                 for check_function in check_functions:
                     if check_function(file, name):
                         # Exit the loop if any check function returns True
                         break
                 else:
                     # This block is executed if none of the check functions return True
-                    for blocked in blocked_extensions:
-                        if name.lower().endswith(blocked):
-                            return
                     if not file.is_dir():
                         move_file(random_dir, file, name)
 
